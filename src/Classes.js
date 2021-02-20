@@ -1,9 +1,12 @@
 export class App {
-  constructor(todos, dropzones, input) {
+  constructor(todos, dropzones, input, addBtn) {
     this.todos = new Todos(todos)
     this.dnd = new DragAndDrop(this.todos)
-    this.dropzones = dropzones
-    this.dom = new DOM(input, this.todos, this.dropzones)
+    this.dropzones = document.querySelectorAll(dropzones)
+    this.dom = new DOM(document.querySelector(input), this.todos, this.dropzones)
+    this.addBtn = document.querySelector(addBtn)
+
+    addBtn.addEventListener('click', this.dom.addTodo.bind(app.dom))
 
     this.init()
   }
@@ -15,6 +18,13 @@ export class App {
       idx = todo.idx
     })
     this.dom.setIdx(idx ?? '0')
+
+    this.dropzones.forEach(dropZone => {
+      dropZone.addEventListener('drop', this.dnd.drop.bind(this.dnd))
+      dropZone.addEventListener('dragover', this.dnd.dragover.bind(this.dnd))
+      dropZone.addEventListener('dragleave', this.dnd.dragleave.bind(this.dnd))
+    })
+
   }
 }
 
@@ -23,6 +33,8 @@ class DOM {
     this.input = input
     this.todos = todos
     this.dropzones = dropzones
+
+    window.deleteTodo = this.deleteTodo.bind(this)
   }
 
   addTodo(e) {
@@ -58,6 +70,7 @@ class DOM {
 class DragAndDrop {
   constructor(todos) {
     this.todos = todos
+    window.dragStart = this.dragStart.bind(this)
   }
 
   drop(e) {
