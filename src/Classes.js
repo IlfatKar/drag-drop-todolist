@@ -6,18 +6,20 @@ export class App {
     this.dom = new DOM(document.querySelector(input), this.todos, this.dropzones)
     this.addBtn = document.querySelector(addBtn)
 
-    addBtn.addEventListener('click', this.dom.addTodo.bind(app.dom))
+    this.addBtn.addEventListener('click', this.dom.addTodo.bind(this.dom))
 
     this.init()
   }
 
   init() {
-    let idx
-    this.todos.todos.forEach(todo => {
-      this.dropzones[todo.dropzone].insertAdjacentHTML('beforeend', this.dom.todoHtml(todo))
-      idx = todo.idx
-    })
-    this.dom.setIdx(idx ?? '0')
+    let idx = 0
+    if(this.todos.todos.length > 0){
+      this.todos.todos.forEach(todo => {
+        this.dropzones[todo.dropzone].insertAdjacentHTML('beforeend', this.dom.todoHtml(todo))
+      })
+      idx = this.todos.todos[this.todos.todos.length - 1].idx + 1
+    }
+    this.dom.setIdx(idx)
 
     this.dropzones.forEach(dropZone => {
       dropZone.addEventListener('drop', this.dnd.drop.bind(this.dnd))
