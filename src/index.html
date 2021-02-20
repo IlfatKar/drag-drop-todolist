@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Todo list</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,300italic,700,700italic" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css" rel="stylesheet">
+  <link href="main.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+  <h1 class="center">Todo list</h1>
+  <div class="row">
+    <div class="column"></div>
+    <div class="column column-40"><input id="input" placeholder="Todo" type="text"></div>
+    <div class="column">
+      <button class="button" id="addBtn">Добавить</button>
+    </div>
+    <div class="column"></div>
+  </div>
+  <div class="row">
+    <div class="column center"><h4>Запланированно</h4></div>
+    <div class="column center"><h4>В процессе</h4></div>
+    <div class="column center"><h4>Завершено</h4></div>
+  </div>
+
+  <div class="todo-list">
+    <div class="row">
+      <div class="column drop-zone" data-dropzone="0">
+
+      </div>
+      <div class="column drop-zone" data-dropzone="1">
+
+      </div>
+      <div class="column drop-zone" data-dropzone="2">
+
+      </div>
+    </div>
+  </div>
+</div>
+<script src="index.js"></script>
+</body>
+</html>

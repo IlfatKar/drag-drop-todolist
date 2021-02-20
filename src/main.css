@@ -1,0 +1,38 @@
+.container{
+  margin-top: 15px;
+}
+
+input{
+  margin-bottom: 25px;
+}
+
+.center{
+  text-align: center;
+}
+
+.todo{
+  border: 1px solid #d1d1d1;
+  border-radius: 5px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.todo:hover{
+  background-color: rgba(209, 209, 209, 0.1);
+  cursor: pointer;
+}
+
+.todo > * {
+  display: inline-block;
+  margin: 0;
+}
+
+.todo button{
+  font-size: 2rem;
+}
+
+.drag-over{
+  background-color: rgba(209, 209, 209, 0.15);
+}
